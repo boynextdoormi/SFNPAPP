@@ -1,0 +1,752 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<SERV name="针刺机控制器" commode="MODBUS" handshakeaddr="0000H" >
+
+<MONITOR>
+
+<ADDRESSES>
+
+<ADDR id="RCTRLSTART" name="实时监控开始"      addr="1090H" val="AAAAH" />
+<ADDR id="RCTRLSTOP"  name="实时监控停止"      addr="1090H" val="5555H" />
+<ADDR id="RENABLE"    name="实时监控通道允许"  addr="1091H" />
+<ADDR id="RPERIOD"    name="实时监控采样周期"  addr="1092H" />
+<ADDR id="RCHANNEL1"  name="监控通道1内容设置" addr="1093H" />
+<ADDR id="RCHANNEL2"  name="监控通道2内容设置" addr="1094H" />
+<ADDR id="RCHANNEL3"  name="监控通道3内容设置" addr="1095H" />
+<ADDR id="RCHANNEL4"  name="监控通道4内容设置" addr="1096H" />
+
+<ADDR id="RDURATION" name="实时监控持续时间"  addr="0711H" unit="s"     coef="1"   min="1" max="100" def="10" />
+<ADDR id="HOUTCTRL"  name="历史监控输出控制"  addr="0718H" startval="1" stopaddr="0710H" stopval="0" type="U16" />
+<ADDR id="HDURATION" name="历史监控持续时间"  addr="0712H" unit="s"   coef="1" min="1" max="100" def="10" />
+<ADDR id="HPERIOD"   name="历史监控采样周期"  addr="071BH" unit="ms"  coef="0.1" min="1" max="100" def="10" />
+<ADDR id="HENABLE"   name="历史监控采样允许"  addr="0719H" />
+<ADDR id="HCONTENT"  name="历史采样内容设定"  addr="071AH" />
+<ADDR id="HCHANNEL1" name="历史通道1内容设置" addr="071CH" />
+<ADDR id="HCHANNEL2" name="历史通道2内容设置" addr="071DH" />
+<ADDR id="HCHANNEL3" name="历史通道3内容设置" addr="071EH" />
+<ADDR id="HCHANNEL4" name="历史通道4内容设置" addr="071FH" />
+
+</ADDRESSES>
+
+<CHANNELS>
+
+<CHANNEL id="STP-01" name="当前转速"       addr="2002H" attr="R" type="I16" coef="1"     unit="rpm"   min="-20000" max="20000" def="0" />
+<CHANNEL id="STP-02" name="指令转速"       addr="2003H" attr="R" type="I16" coef="1"     unit="rpm"   min="-20000" max="20000" def="0" />
+<CHANNEL id="STP-03" name="平均转矩"       addr="2004H" attr="R" type="I16" coef="0.01"  unit="NM"    min="-1000"  max="1000"  def="0" />
+<CHANNEL id="STP-04" name="直流电压"       addr="2005H" attr="R" type="U16" coef="1"     unit="V"     min="0"      max="720"   def="0" />
+<CHANNEL id="STP-05" name="命令积算脉冲"   addr="2006H" attr="R" type="I32" coef="1"     unit="pul"   min="-32768" max="32768" def="0" />
+<CHANNEL id="STP-06" name="返回积算脉冲"   addr="2008H" attr="R" type="I32" coef="1"     unit="pul"   min="-32768" max="32768" def="0" />
+<CHANNEL id="STP-07" name="位置偏差"       addr="200aH" attr="R" type="I32" coef="1"     unit="pul"   min="-32768" max="32768" def="0" />
+<CHANNEL id="STP-08" name="编码器反馈"     addr="200cH" attr="R" type="I32" coef="1"     unit="pul"   min="-32768" max="32768" def="0" />
+<CHANNEL id="STP-09" name="保留1"          addr="200eH" attr="R" type="U16" coef="1"     unit=""      min="0"      max="65536" def="0" />
+<CHANNEL id="STP-0a" name="保留2"          addr="200fH" attr="R" type="U16" coef="1"     unit=""      min="0"      max="65536" def="0" />
+<CHANNEL id="STP-0b" name="负荷惯量比"     addr="2010H" attr="R" type="U16" coef="1"     unit="%"     min="0"      max="65536" def="0" />
+<CHANNEL id="STP-0c" name="脉冲串输入频率" addr="2011H" attr="R" type="U16" coef="0.01"  unit="kHz"   min="0"      max="5000"  def="0" />
+<CHANNEL id="STP-0d" name="散热器温度"     addr="2012H" attr="R" type="U16" coef="1"     unit="℃"    min="0"      max="120"   def="0" />
+<CHANNEL id="STP-0e" name="模拟给定电压"   addr="2013H" attr="R" type="U16" coef="0.01"  unit="V"     min="0"      max="1000"  def="0" />
+<CHANNEL id="STP-0f" name="IO端子状态"     addr="2014H" attr="R" type="H16" coef="1"     unit=""      min="0"      max="65535" def="0" />
+<CHANNEL id="STP-30" name="电角度"         addr="2030H" attr="R" type="U16" coef="0.1"   unit="°"    min="0"      max="3600"   def="0" />
+<CHANNEL id="STP-31" name="A相电流"        addr="2031H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<CHANNEL id="STP-32" name="B相电流"        addr="2032H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<CHANNEL id="STP-33" name="C相电流"        addr="2033H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<CHANNEL id="STP-34" name="D轴电流给定"    addr="2034H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<CHANNEL id="STP-35" name="Q轴电流给定"    addr="2035H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<CHANNEL id="STP-36" name="D轴电流反馈"    addr="2036H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<CHANNEL id="STP-37" name="Q轴电流反馈"    addr="2037H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<CHANNEL id="STP-38" name="D轴电压给定"    addr="2038H" attr="R" type="I16" coef="0.001" unit=""      min="-2000"  max="2000"   def="0" />
+<CHANNEL id="STP-39" name="Q轴电压给定"    addr="2039H" attr="R" type="I16" coef="0.001" unit=""      min="-2000"  max="2000"   def="0" />
+<CHANNEL id="STP-3a" name="机械角度"       addr="203aH" attr="R" type="I16" coef="1"     unit="pul"   min="0"      max="3600"   def="0" />
+<CHANNEL id="STP-3b" name="Ialfa"          addr="203bH" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<CHANNEL id="STP-3c" name="Ibeta"          addr="203cH" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+
+</CHANNELS>
+
+</MONITOR>
+
+<PARAMS>
+<!--
+
+ 标签 含义 地址  属性  单位  类型  系数  最大 最小 预设 说明
+ id= name= addr= attr= unit= type= coef= max= min= def= desc=
+
+属性：
+R=ReadOnly, S=立即生效Simutaneous, 
+P=必须重开机才有效PowerOn, T=断电不记忆
+
+类型：BIT, U8, I8, H8, U16, I16, H16, U32, I32, H32
+
+系数：直接写, 如0.1, 10, 0.5, 2均可
+
+类别/分组：先区分类别，即参数或状态，再在其类别下根据参数或状态情况分组，便于组织显示内容
+
+-->
+
+<PARAMGROUP name="系统配置" id="PN0">
+
+<PARAM id="SYS_01" name="0000 厂商名称"         addr="0000H"     attr="P" type="U16" coef="1"    unit=""  min="1" max="32767"   def="4" />
+<PARAM id="SYS-02" name="0001 产品名称"         addr="0001H"     attr="P" type="U16" coef="1"    unit=""  min="1" max="32767"   def="1" />
+<PARAM id="SYS-03" name="0002 软件版本"         addr="0002H"     attr="P" type="U16" coef="1"    unit=""  min="0" max="2"       def="2" />
+<PARAM id="SYS-04" name="0003 本机地址"         addr="0003H"     attr="P" type="U16" coef="1"    unit=""  min="0" max="3"       def="0" />
+<PARAM id="SYS-05" name="0004 调整模式"         addr="0004H"     attr="P" type="U16" coef="1"    unit=""  min="0" max="32767"   def="32" />
+<PARAM id="SYS-06" name="0004 加载默认配置"     addr="0005H"     attr="P" type="U16" coef="0.1"  unit=""  min="0" max="1000"    def="10" />
+<PARAM id="SYS-07" name="0005 保存当前配置"     addr="0006H"     attr="P" type="U16" coef="1"    unit=""  min="0" max="400"     def="250" />
+<PARAM id="SYS-08" name="0006 一级密码"         addr="0007H"     attr="P" type="U32" coef="1"    unit=""  min="0" max="400"     def="250" />
+<PARAM id="SYS-09" name="0007 二级密码"         addr="0008H"     attr="P" type="U16" coef="1"    unit=""  min="0" max="5"       def="0" />
+<PARAM id="SYS-09" name="0007 三级密码"         addr="0008H"     attr="P" type="U16" coef="1"    unit=""  min="0" max="5"       def="0" />
+
+<PARAM id="Pn-010" name="Pn-010 CONT1信号分配"   addr="0009H" attr="P" type="U16" coef="1" unit="" min="0" max="23" def="1" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9: ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+
+</PARAM>
+
+<PARAM id="Pn-011" name="Pn-011 CONT2信号分配"   addr="000aH" attr="P" type="U16" coef="1" unit="" min="0" max="23" def="0" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9: ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+
+</PARAM>
+
+<PARAM id="Pn-012" name="Pn-012 CONT3信号分配"   addr="000bH" attr="P" type="U16" coef="1" unit="" min="0" max="23" def="0" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9: ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+
+</PARAM>
+
+<PARAM id="Pn-013" name="Pn-013 CONT4信号分配"   addr="000cH" attr="P" type="U16" coef="1" unit="" min="0" max="23" def="0" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9: ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+
+</PARAM>
+
+<PARAM id="Pn-014" name="Pn-014 CONT5信号分配"   addr="000dH" attr="P" type="U16" coef="1" unit="" min="0" max="23" def="0" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9:  ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+
+</PARAM>
+
+<PARAM id="Pn-015" name="Pn-015 OUT1信号分配"                     addr="000eH"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="23"    def="4" />
+<PARAM id="Pn-016" name="Pn-016 OUT2信号分配"                     addr="000fH"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="23"    def="0" />
+<PARAM id="Pn-017" name="Pn-017 OUT3信号分配"                     addr="0010H"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="23"    def="0" />
+<PARAM id="Pn-018" name="Pn-018 OUT4信号分配"                     addr="0011H"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="23"    def="0" />
+
+<PARAM id="Pn-019" name="Pn-019 输出脉冲数"                       addr="0012H"     attr="P" type="U16" coef="1"     unit="pul"    min="16" max="2500"  def="2500" />
+<PARAM id="Pn-020" name="Pn-020 Z相补偿"                          addr="0013H"     attr="P" type="U16" coef="1"     unit="pul"    min="0"  max="10000" def="0" />
+<PARAM id="Pn-021" name="Pn-021 0偏差幅度"                        addr="0014H"     attr="P" type="U16" coef="1"     unit="pul"    min="1"  max="2000"  def="400" />
+<PARAM id="Pn-022" name="Pn-022 偏差超出程度"                     addr="0015H"     attr="P" type="U16" coef="0.1"   unit="圈"     min="10" max="10000" def="200" />
+<PARAM id="Pn-023" name="Pn-023 0速度幅度"                        addr="0016H"     attr="P" type="U16" coef="1"     unit="rpm"    min="1"  max="2000"  def="50" />
+<PARAM id="Pn-024" name="Pn-024 定位结束判定时间"                 addr="0017H"     attr="P" type="U16" coef="0.001" unit="s"      min="0"  max="1000"  def="0" />
+<PARAM id="Pn-025" name="Pn-025 最大电流限定值"                   addr="0018H"     attr="P" type="U16" coef="1"     unit="%"      min="0"  max="400"   def="250" />
+<PARAM id="Pn-026" name="Pn-026 电压不足时报警检出"               addr="0019H"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="1"     def="1" />
+<PARAM id="Pn-027" name="Pn-027 电压不足启动"                     addr="001aH"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="1"     def="1" />
+</PARAMGROUP>
+
+
+<PARAMGROUP name="调节参数">
+<PARAM id="Pn-028" name="Pn-028 制造版本"                         addr="001bH"     attr="R" type="U16" coef="0.01"  unit=""       min="0"  max="2099"  def="916" />
+<PARAM id="Pn-029" name="Pn-029 禁止换写参数"                     addr="001cH"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="1"     def="0" />
+<PARAM id="Pn-030" name="Pn-030 触摸面板初始显示"                 addr="001dH"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="18"    def="0" />
+<PARAM id="Pn-031" name="Pn-031 手动进行速度一"                   addr="001eH"     attr="P" type="U16" coef="0.1"   unit="RPM"    min="1"  max="30000" def="2000" />
+<PARAM id="Pn-032" name="Pn-032 手动进行速度二"                   addr="001fH"     attr="P" type="U16" coef="0.1"   unit="RPM"    min="1"  max="30000" def="5000" />
+<PARAM id="Pn-033" name="Pn-033 手动进行速度三"                   addr="0020H"     attr="P" type="U16" coef="0.1"   unit="RPM"    min="1"  max="30000" def="10000" />
+<PARAM id="Pn-034" name="Pn-034 最高转速"                         addr="0021H"     attr="P" type="U16" coef="0.1"   unit="RPM"    min="1"  max="32000" def="25000" />
+<PARAM id="Pn-035" name="Pn-035 加速时间一"                       addr="0022H"     attr="P" type="U16" coef="0.001" unit="s"      min="1"  max="9999"  def="100" />
+<PARAM id="Pn-036" name="Pn-036 减速时间一"                       addr="0023H"     attr="P" type="U16" coef="0.001" unit="s"      min="1"  max="9999"  def="100" />
+<PARAM id="Pn-037" name="Pn-037 加速时间二"                       addr="0024H"     attr="P" type="U16" coef="0.001" unit="s"      min="1"  max="9999"  def="500" />
+<PARAM id="Pn-038" name="Pn-038 减速时间二"                       addr="0025H"     attr="P" type="U16" coef="0.001" unit="s"      min="1"  max="9999"  def="500" />
+<PARAM id="Pn-039" name="Pn-039 0速钳位电平"                      addr="0026H"     attr="P" type="U16" coef="0.1"   unit="V"      min="0"  max="5000"  def="10" />
+<PARAM id="Pn-040" name="Pn-040 位置调节器增益1"                  addr="0027H"     attr="P" type="U16" coef="1"     unit="rad/s"  min="1"  max="1000"  def="25" />
+<PARAM id="Pn-041" name="Pn-041 速度调节器增益1"                  addr="0028H"     attr="P" type="U16" coef="1"     unit="Hz"     min="1"  max="1500"  def="100" />
+<PARAM id="Pn-042" name="Pn-042 速度调节器积分系数"               addr="0029H"     attr="P" type="U16" coef="1"     unit="ms"     min="0"  max="4095"  def="400" />
+<PARAM id="Pn-043" name="Pn-043 S字时间常数"                      addr="002aH"     attr="P" type="U16" coef="1"     unit="ms"     min="0"  max="1000"  def="10" />
+<PARAM id="Pn-044" name="Pn-044 前馈增益"                         addr="002bH"     attr="P" type="U16" coef="0.001" unit="%"      min="0"  max="1200"  def="0" />
+<PARAM id="Pn-045" name="Pn-045 前馈过滤器时间常数"               addr="002cH"     attr="P" type="U16" coef="0.1"   unit="ms"     min="0"  max="2500"  def="0" />
+<PARAM id="Pn-046" name="Pn-046 转矩过滤器时间常数"               addr="002dH"     attr="P" type="U16" coef="0.01"  unit="ms"     min="0"  max="2000"  def="0" />
+<PARAM id="Pn-047" name="Pn-047 速度过滤器时间常数"               addr="002eH"     attr="P" type="U16" coef="0.01"  unit="ms"     min="0"  max="2000"  def="0" />
+<PARAM id="Pn-048" name="Pn-048 增益切换主要原因"                 addr="002fH"     attr="P" type="U16" coef="1"     unit=""       min="0"  max="3"     def="1" />
+<PARAM id="Pn-049" name="Pn-049 增益切换水平"                     addr="0030H"     attr="P" type="U16" coef="1"     unit="rpm"    min="1"  max="1000"  def="100" />
+<PARAM id="Pn-050" name="Pn-050 增益切换时间常数"                 addr="0031H"     attr="P" type="U16" coef="1"     unit="s"      min="1"  max="100"   def="10" />
+<PARAM id="Pn-051" name="Pn-051 位置调节器增益2"                  addr="0032H"     attr="P" type="U16" coef="1"     unit="%"      min="1"  max="300"   def="100" />
+<PARAM id="Pn-052" name="Pn-052 速度调节器增益2"                  addr="0033H"     attr="P" type="U16" coef="1"     unit="%"      min="1"  max="300"   def="100" />
+<PARAM id="Pn-053" name="Pn-053 速度调节器积分系数"               addr="0034H"     attr="P" type="U16" coef="1"     unit="%"      min="0"  max="300"   def="100" />
+<PARAM id="Pn-054" name="Pn-054 模拟量设定过滤器"                 addr="0035H"     attr="P" type="U16" coef="0.001" unit="s"      min="0"  max="9999"  def="10" />
+<PARAM id="Pn-055" name="Pn-055 制动电阻类型选择"                 addr="0036H"     attr="P" type="U16" coef="0.001" unit=""       min="0"  max="2"     def="0" >
+<OPTION name="0：无制动电阻"         val="0" />
+<OPTION name="1：内置制动电阻"       val="1" />
+<OPTION name="2：外接制动电阻"       val="2" />
+</PARAM>
+<PARAM id="Pn-056" name="Pn-056 断使能后的减速时间"               addr="0037H"     attr="P" type="U16" coef="0.001"  unit="s"  min="1"     max="9999"  def="1" />
+<PARAM id="Pn-057" name="Pn-057 平滑停车功能~n针对位置环"        addr="0038H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="1"     def="0" />
+<PARAM id="Pn-058" name="Pn-058 OL报警曲线~n灵敏度系数"           addr="0039H"     attr="P" type="U16" coef="0.0001" unit=""   min="0"     max="10000" def="5000" />
+<PARAM id="Pn-059" name="Pn-059 OL判别系数"                      addr="003aH"     attr="P" type="U16" coef="0.01"   unit=""   min="34"    max="200"   def="100" />
+<PARAM id="Pn-060" name="Pn-060 位置给定过滤器系数"               addr="003bH"     attr="P" type="U16" coef="0.01"   unit=""   min="0"     max="20000" def="0" />
+<PARAM id="Pn-061" name="Pn-061 欠压点选择"                       addr="003cH"     attr="P" type="U16" coef="1"      unit="V"  min="150"   max="210"   def="160" />
+<PARAM id="Pn-062" name="Pn-062 OH报警温度"                       addr="003dH"     attr="P" type="U16" coef="1"      unit="℃" min="40"    max="110"   def="80" />
+<PARAM id="Pn-063" name="Pn-063 开风扇温度"                       addr="003eH"     attr="P" type="U16" coef="1"      unit="℃" min="20"    max="70"    def="40" />
+<PARAM id="Pn-064" name="Pn-064 电机型号选择"                     addr="003fH"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="100"   def="42" />
+<PARAM id="Pn-065" name="Pn-065 电机密码"                         addr="0040H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="9999"  def="50" />
+<PARAM id="Pn-066" name="Pn-066 模式选择"                         addr="0041H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="1"     def="0" />
+<PARAM id="Pn-067" name="Pn-067 运行方向"                         addr="0042H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="1"     def="0" />
+<PARAM id="Pn-068" name="Pn-068 防止断裂模式开关"                 addr="0043H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="1"     def="0" />
+<PARAM id="Pn-069" name="Pn-069 力矩判断百分比"                   addr="0044H"     attr="P" type="U16" coef="1"      unit="%"  min="1"     max="300"   def="10" />
+<PARAM id="Pn-070" name="Pn-070 模拟量命令增益"                   addr="0045H"     attr="P" type="I16" coef="0.01"   unit="%"  min="-150"  max="150"   def="100" />
+<PARAM id="Pn-071" name="Pn-071 模拟量命令补偿"                   addr="0046H"     attr="P" type="I16" coef="1"      unit=""   min="-2000" max="2000"  def="0" />
+<PARAM id="Pn-072" name="Pn-072 模拟量硬件中点"                   addr="0047H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="4096"  def="2048" />
+<PARAM id="Pn-073" name="Pn-073 制动器工作时间"                   addr="0048H"     attr="P" type="U16" coef="0.01"   unit="s"  min="0"     max="799"   def="10" />
+
+<PARAM id="Pn-074" name="Pn-074 CONT1功能分配"                    addr="0049H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="23"    def="0" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9: ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+</PARAM>
+
+<PARAM id="Pn-075" name="Pn-075 CONT2功能分配"                    addr="004aH"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="23"    def="0" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9: ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+</PARAM>
+
+<PARAM id="Pn-076" name="Pn-076 CONT3功能分配"                    addr="004bH"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="23"    def="0" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9: ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+</PARAM>
+
+<PARAM id="Pn-077" name="Pn-077 CONT4功能分配"                    addr="004cH"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="23"    def="0" >
+<OPTION name="0: 无指定" val="0" />
+<OPTION name="1: 伺服启动[RUN]" val="1" />
+<OPTION name="2: 复位[RST]" val="2" />
+<OPTION name="3: +OT" val="3" />
+<OPTION name="4: -OT" val="4" />
+<OPTION name="5: 紧急停止[EMG]" val="5" />
+<OPTION name="6: ?"  val="6" />
+<OPTION name="7: 清除偏差" val="7" />
+<OPTION name="8: 外部再生电阻过热" val="8" />
+<OPTION name="9: ?" val="9" />
+<OPTION name="10: ?" val="10" />
+<OPTION name="11: 禁止命令脉冲" val="11" />
+<OPTION name="12: 命令脉冲α选择0" val="12" />
+<OPTION name="13: 命令脉冲α选择1" val="13" />
+<OPTION name="14: 控制模式切换" val="14" />
+<OPTION name="15: 手动正转[FWD]" val="15" />
+<OPTION name="16: 手动反转[REV]" val="16" />
+<OPTION name="17: 多段速度1 [X1]" val="17" />
+<OPTION name="18: 多段速度2 [X2]" val="18" />
+<OPTION name="19: 加减速时间选择" val="19" />
+<OPTION name="20: 电流限制有效" val="20" />
+<OPTION name="21: 空转[BX]" val="21" />
+<OPTION name="22: 其他1" val="22" />
+<OPTION name="23: 其他2" val="23" />
+</PARAM>
+
+
+<PARAM id="Pn-078" name="Pn-078 命令脉冲补偿alfa1"                addr="004dH"     attr="P" type="U16" coef="1"      unit=""   min="1"     max="32767" def="1" />
+<PARAM id="Pn-079" name="Pn-079 命令脉冲补偿alfa2"                addr="004eH"     attr="P" type="U16" coef="1"      unit=""   min="1"     max="32767" def="1" />
+<PARAM id="Pn-080" name="Pn-080 命令脉冲补偿alfa3"                addr="004fH"     attr="P" type="U16" coef="1"      unit=""   min="1"     max="32767" def="1" />
+<PARAM id="Pn-081" name="Pn-081 通信传输协议"                     addr="0050H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="1"     def="0" />
+<PARAM id="Pn-082" name="Pn-082 站号"                             addr="0051H"     attr="P" type="U16" coef="1"      unit=""   min="1"     max="31"    def="1" />
+<PARAM id="Pn-083" name="Pn-083 波特率"                           addr="0052H"     attr="P" type="U16" coef="1"      unit=""   min="0"     max="5"     def="1" />
+</PARAMGROUP>
+
+
+<PARAMGROUP name="调试参数">
+<PARAM id="Pn-084" name="Pn-084 简易调整：行程设定"               addr="0053H"     attr="P" type="U16" coef="0.1"   unit="pul"  min="5"    max="2000"  def="20" />
+<PARAM id="Pn-085" name="Pn-085 简易调整：速度设定"               addr="0054H"     attr="P" type="U16" coef="0.1"   unit="rpm"  min="100"  max="30000" def="2000" />
+<PARAM id="Pn-086" name="Pn-086 简易调整：计时器设定"             addr="0055H"     attr="P" type="U16" coef="0.01"  unit="s"    min="1"    max="500"   def="50" />
+<PARAM id="Pn-087" name="Pn-087 简易调整：计数器设定"             addr="0056H"     attr="P" type="U16" coef="1"     unit="s"    min="1"    max="1000"  def="10" />
+<PARAM id="Pn-088" name="Pn-088 攻丝机力矩保护~n延时时间"         addr="0057H"     attr="P" type="U16" coef="1"     unit="s"    min="0"    max="2000"  def="500" />
+<PARAM id="Pn-089" name="Pn-089 驱动器功率段"                     addr="0058H"     attr="P" type="U16" coef="0.1"   unit="Kw"   min="2"    max="15"    def="15" />
+<PARAM id="Pn-090" name="Pn-090 力矩控制模式速度限制"             addr="0059H"     attr="P" type="U16" coef="0.1"   unit="rpm"  min="0"    max="30000" def="0" />
+<PARAM id="Pn-091" name="Pn-091 测试电流给定"                     addr="005aH"     attr="P" type="U16" coef="0.01"  unit="A"    min="0"    max="300"   def="100" />
+<PARAM id="Pn-092" name="Pn-092 测试速度给定"                     addr="005bH"     attr="P" type="U16" coef="0.1"   unit="rpm"  min="0"    max="30000" def="2000" />
+<PARAM id="Pn-093" name="Pn-093 测试运行方式"                     addr="005cH"     attr="P" type="U16" coef="1"     unit=""     min="0"    max="2"     def="1" />
+<PARAM id="Pn-094" name="Pn-094 点动速度"                         addr="005dH"     attr="P" type="U16" coef="0.1"   unit="rps"  min="0"    max="30000" def="500" />
+<PARAM id="Pn-095" name="Pn-095 无意义"                           addr="005eH"     attr="P" type="U16" coef="0.001" unit=""     min="0"    max="500"   def="30" />
+<PARAM id="Pn-096" name="Pn-096 电流调节器微分时间"               addr="005fH"     attr="P" type="U16" coef="0.01"  unit="ms"   min="0"    max="100"   def="5" />
+<PARAM id="Pn-097" name="Pn-097 电流调节器截止频率"               addr="0060H"     attr="P" type="U16" coef="1"     unit="Hz"   min="100"  max="3000"  def="650" />
+<PARAM id="Pn-098" name="Pn-098 电流调节器积分时间"               addr="0061H"     attr="P" type="U16" coef="0.1"   unit="ms"   min="1"    max="1000"  def="18" />
+<PARAM id="Pn-099" name="Pn-099 速度反馈滤波时间"                 addr="0062H"     attr="P" type="U16" coef="0.01"  unit="ms"   min="0"    max="1000"  def="0" />
+<PARAM id="Pn-100" name="Pn-100 电流环频率~n电流环频率"           addr="0063H"     attr="P" type="U16" coef="1"     unit="kHz"  min="8"    max="16"    def="12" />
+<PARAM id="Pn-101" name="Pn-101 力矩控制模式~n力矩给定死区"       addr="0064H"     attr="P" type="U16" coef="0.01"  unit="%"    min="0"    max="200"   def="10" />
+<PARAM id="Pn-102" name="Pn-102 力矩控制模式~n力矩给定滤波"       addr="0065H"     attr="P" type="U16" coef="0.01"  unit="s"    min="0"    max="2000"  def="0" />
+
+<PARAM id="Pn-116"	name="Pn-116 单模拟量模式~n双模拟量模式"	      addr="0073h"     attr="S" unit="" 	type="U16" coef="1"	 max="1"        min="0"       def="0" />
+<PARAM id="Pn-117"	name="Pn-117 报警延时 ms"        				      addr="0074h"     attr="S" unit="" 	type="U16" coef="1"	 max="1000"     min="0"       def="0" />
+<PARAM id="Pn-118"	name="Pn-118 模拟量2硬件中点"    				      addr="0075h"     attr="S" unit="" 	type="I16" coef="1"	 max="4000"     min="-4000"   def="0" />
+<PARAM id="Pn-119"	name="Pn-119 减速度S字"          				      addr="0076h"     attr="S" unit="" 	type="U16" coef="1"	 max="1000"     min="0"       def="400" />
+<PARAM id="Pn-120"	name="Pn-120 加速度S字"          				      addr="0077h"     attr="S" unit="" 	type="U16" coef="1"	 max="1000"     min="0"       def="400" />
+<PARAM id="Pn-121"	name="Pn-121 提前减速脉冲值"     				      addr="0078h"     attr="S" unit="" 	type="U16" coef="1"	 max="20000"    min="0"       def="0" />
+<PARAM id="Pn-122"	name="Pn-122 延时减速脉冲值"     				      addr="0079h"     attr="S" unit="" 	type="U16" coef="1"	 max="20000"    min="0"       def="400" />
+<PARAM id="Pn-123"	name="Pn-123 减速度S字"          				      addr="007ah"     attr="S" unit="" 	type="U16" coef="1"	 max="1000"     min="0"       def="600" />
+<PARAM id="Pn-124"	name="Pn-124 加速度S字"          				      addr="007bh"     attr="S" unit="" 	type="U16" coef="1"	 max="1000"     min="0"       def="400" />
+
+</PARAMGROUP>
+
+<PARAMGROUP name="电机参数">
+<PARAM id="Pn-103" name="Pn-103 电机额定转速"                   addr="0066H"     attr="P" type="U16" coef="1"     unit="rpm"  min="100"  max="5000"  def="2500" />
+<PARAM id="Pn-104" name="Pn-104 电机额定电流"                   addr="0067H"     attr="P" type="U16" coef="0.01"  unit="A"    min="10"   max="15000" def="500" />
+<PARAM id="Pn-105" name="Pn-105 电机力矩系数"                   addr="0068H"     attr="P" type="U16" coef="0.01"  unit="Nm/A" min="10"   max="500"   def="100" />
+<PARAM id="Pn-106" name="Pn-106 电机线电感"                     addr="0069H"     attr="P" type="U16" coef="0.01"  unit="mH"   min="50"   max="8000"  def="360" />
+<PARAM id="Pn-107" name="Pn-107 电机电气时间常数"               addr="006aH"     attr="P" type="U16" coef="0.01"  unit="ms"   min="50"   max="2000"  def="319" />
+<PARAM id="Pn-108" name="Pn-108 电机转子惯量"                   addr="006bH"     attr="P" type="U16" coef="0.01"  unit="gm2"  min="1"    max="2000"  def="106" />
+<PARAM id="Pn-109" name="Pn-109 电机极对数"                     addr="006cH"     attr="P" type="U16" coef="1"     unit="pu"   min="1"    max="6"     def="4" />
+<PARAM id="Pn-110" name="Pn-110 电机额定电压"                   addr="006dH"     attr="P" type="U16" coef="1"     unit="V"    min="10"   max="220"   def="220" />
+<PARAM id="Pn-111" name="Pn-111 编码器线数"                     addr="006eH"     attr="P" type="U16" coef="1"     unit="PPR"  min="1000" max="5000"  def="2500" />
+</PARAMGROUP>
+
+<PARAMGROUP name="系统参数">
+<PARAM id="Pn-28" name="Pn-28 制造版本"                         addr="001bH"     attr="R"  type="U16" coef="0.01" unit=""     min="0"     max="2099"  def="916" />
+<PARAM id="Pn-81" name="Pn-81 通信传输协议"                     addr="0050H"     attr="P"  type="U16" coef="1"    unit=""     min="0"     max="1"     def="0" />
+<PARAM id="Pn-82" name="Pn-82 站号"                             addr="0051H"     attr="P"  type="U16" coef="1"    unit=""     min="1"     max="31"    def="1" />
+<PARAM id="Pn-83" name="Pn-83 波特率"                           addr="0052H"     attr="P"  type="U16" coef="1"    unit=""     min="0"     max="5"     def="1" />
+<PARAM id="Pn-112" name="Pn-112 密码相关参数~n设定密码"         addr="006fH"     attr="PV" type="U16" coef="1"    unit=""     min="0"     max="20000" def="0" />
+<PARAM id="Pn-113" name="Pn-113 密保时间设置"                   addr="0070H"     attr="PW" type="U16" coef="1"    unit=""     min="0"     max="6000"  def="0" />
+<PARAM id="Pn-114" name="Pn-114 密码设置"                       addr="0071H"     attr="PW" type="U16" coef="1"    unit=""     min="0"     max="9999"  def="0" />
+<PARAM id="Pn-115" name="Pn-115 解密密码设置"                   addr="0072H"     attr="PW" type="U16" coef="1"    unit=""     min="0"     max="20000" def="0" />
+<PARAM id="Pn-125" name="Pn-125 制造版本i"                      addr="007cH"     attr="PW" type="U16" coef="0.01" unit=""     min="0"     max="2099"  def="916" />
+</PARAMGROUP>
+                                                        
+
+<PARAMGROUP name="扩展参数">
+<PARAM id="Pr-001" name="Pr-001	位置环前馈"                       addr="007dh" attr="S" unit="" 	type="U16" coef="0.0001" max="5000"     min="0"       def="0" />
+<PARAM id="Pr-002" name="Pr-002	前馈滤波器"                       addr="007eh" attr="S" unit="" 	type="U16" coef="0.01"	 max="2000"     min="0"       def="50" />
+<PARAM id="Pr-003" name="Pr-003	位置环收敛积分"                   addr="007fh" attr="S" unit="" 	type="U16" coef="0.1"	   max="10000"    min="10"      def="200" />
+<PARAM id="Pr-004" name="Pr-004	位置环微分"                       addr="0080h" attr="S" unit="" 	type="U16" coef="0.01"	 max="100"      min="0"       def="5" />
+<PARAM id="Pr-005" name="Pr-005	速度环调谐"                       addr="0081h" attr="S" unit="" 	type="U16" coef="0.0001" max="10000"    min="0"       def="600" />
+<PARAM id="Pr-006" name="Pr-006	速度反馈方式"                     addr="0082h" attr="P" unit="" 	type="U16" coef="1"	     max="1"        min="0"       def="0" />
+<PARAM id="Pr-007" name="Pr-007	速度调节器模式，"                 addr="0083h" attr="P" unit="" 	type="U16" coef="1"	     max="1"        min="0"       def="0" />
+<PARAM id="Pr-008" name="Pr-008	PDFF，Kv"                         addr="0084h" attr="S" unit="" 	type="U16" coef="0.01"	 max="200"      min="0"       def="100" />
+<PARAM id="Pr-009" name="Pr-009	输入端子CONT1滤波"                addr="0085h" attr="S" unit="" 	type="U16" coef="1"	     max="10"       min="0"       def="0" />
+<PARAM id="Pr-010" name="Pr-010	输入端子CONT2滤波"                addr="0086h" attr="S" unit="" 	type="U16" coef="1"	     max="10"       min="0"       def="0" />
+<PARAM id="Pr-011" name="Pr-011	输入端子CONT3滤波"                addr="0087h" attr="S" unit="" 	type="U16" coef="1"	     max="10"       min="0"       def="0" />
+<PARAM id="Pr-012" name="Pr-012	输入端子CONT4滤波"                addr="0088h" attr="S" unit="" 	type="U16" coef="1"	     max="10"       min="0"       def="0" />
+<PARAM id="Pr-013" name="Pr-013	输入端子CONT5滤波"                addr="0089h" attr="S" unit="" 	type="U16" coef="1"	     max="10"       min="0"       def="0" />
+<PARAM id="Pr-014" name="Pr-014	OUT1输出延时"                     addr="008ah" attr="S" unit="" 	type="U16" coef="1"	     max="1000"     min="0"       def="0" />
+<PARAM id="Pr-015" name="Pr-015	OUT2输出延时"                     addr="008bh" attr="S" unit="" 	type="U16" coef="1"	     max="1000"     min="0"       def="0" />
+<PARAM id="Pr-016" name="Pr-016	OUT3输出延时"                     addr="008ch" attr="S" unit="" 	type="U16" coef="1"	     max="1000"     min="0"       def="0" />
+<PARAM id="Pr-017" name="Pr-017	OUT4输出延时"                     addr="008dh" attr="S" unit="" 	type="U16" coef="1"	     max="1000"     min="0"       def="0" />
+<PARAM id="Pr-018" name="Pr-018	预留0"                            addr="008eh" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+<PARAM id="Pr-019" name="Pr-019	预留1"                            addr="008fh" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+<PARAM id="Pr-020" name="Pr-020	预留2"                            addr="0090h" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+<PARAM id="Pr-021" name="Pr-021	预留3"                            addr="0091h" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+<PARAM id="Pr-022" name="Pr-022	预留4"                            addr="0092h" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+<PARAM id="Pr-023" name="Pr-023	预留5"                            addr="0093h" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+</PARAMGROUP>
+
+<PARAMGROUP name="定位参数">
+<PARAM id="Pr-024" name="Pr-024	位置数据小数点位置"               addr="0094h" attr="S" unit="" 	type="U16" coef="1"	     max="5"        min="0"       def="0" />
+<PARAM id="Pr-025" name="Pr-025	原点复归速度"                     addr="0095h" attr="S" unit="" 	type="U16" coef="0.1"	   max="30000"    min="0"       def="20000" />
+<PARAM id="Pr-026" name="Pr-026	原点复归爬行速度"                 addr="0096h" attr="S" unit="" 	type="U16" coef="0.1"	   max="30000"    min="0"       def="500" />
+<PARAM id="Pr-027" name="Pr-027	原点复归起动方向"                 addr="0097h" attr="P" unit="" 	type="U16" coef="1"	     max="2"        min="0"       def="0" />
+<PARAM id="Pr-028" name="Pr-028	原点复归反转移动量万位"           addr="0098h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-029" name="Pr-029	原点复归反转移动量个位"           addr="0099h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-030" name="Pr-030	原点复归方向"                     addr="009ah" attr="P" unit="" 	type="U16" coef="1"	     max="1"        min="0"       def="0" />
+<PARAM id="Pr-031" name="Pr-031	原点位移量基准信号"               addr="009bh" attr="P" unit="" 	type="U16" coef="1"	     max="5"        min="0"       def="1" />
+<PARAM id="Pr-032" name="Pr-032	原点基准信号"                     addr="009ch" attr="P" unit="" 	type="U16" coef="1"	     max="2"        min="0"       def="0" />
+<PARAM id="Pr-033" name="Pr-033	原点LS时机选择"                   addr="009dh" attr="P" unit="" 	type="U16" coef="1"	     max="1"        min="0"       def="0" />
+<PARAM id="Pr-034" name="Pr-034	原点位移量万位"                   addr="009eh" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-035" name="Pr-035	原点位移量个位"                   addr="009fh" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-036" name="Pr-036	浮动原点位置万位"                 addr="00A0h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-037" name="Pr-037	浮动原点位置个位"                 addr="00A1h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-038" name="Pr-038	原点检测范围万位"                 addr="00A2h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-039" name="Pr-039	原点检测范围个位"                 addr="00A3h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-040" name="Pr-040	原点复归OT时减速时间"             addr="00A4h" attr="S" unit="" 	type="U16" coef="0.1"	   max="65535"    min="0"       def="1000" />
+<PARAM id="Pr-041" name="Pr-041	预置位置万位"                     addr="00A5h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-042" name="Pr-042	预置位置个位"                     addr="00A6h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-043" name="Pr-043	中断移动量万位"                   addr="00A7h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="10000" />
+<PARAM id="Pr-044" name="Pr-044	中断移动量个位"                   addr="00A8h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-045" name="Pr-045	爬行速度减速动作"                 addr="00A9h" attr="P" unit="" 	type="U16" coef="1"	     max="1"        min="0"       def="0" />
+<PARAM id="Pr-046" name="Pr-046	挡块检测时间"                     addr="00Aah" attr="P" unit="" 	type="U16" coef="1"	     max="10000"    min="0"       def="0" />
+<PARAM id="Pr-047" name="Pr-047	挡块转矩限制值"                   addr="00Abh" attr="P" unit="" 	type="U16" coef="1"	     max="100"      min="0"       def="0" />
+<PARAM id="Pr-048" name="Pr-048	选择原点复归OT运行"               addr="00Ach" attr="P" unit="" 	type="U16" coef="1"	     max="1"        min="0"       def="0" />
+<PARAM id="Pr-049" name="Pr-049	Z相偏置万位"                      addr="00Adh" attr="P" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-050" name="Pr-050	Z相偏置个位"                      addr="00Aeh" attr="P" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-051" name="Pr-051	软件OT有效／无效"                 addr="00Afh" attr="P" unit="" 	type="U16" coef="1"	     max="1"        min="0"       def="0" />
+<PARAM id="Pr-052" name="Pr-052	 +软件OT检测位置万位"             addr="00B0h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="20000" />
+<PARAM id="Pr-053" name="Pr-053	 +软件OT检测位置个位"             addr="00B1h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-054" name="Pr-054	 -软件OT检测位置万位"             addr="00B2h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="-20000" />
+<PARAM id="Pr-055" name="Pr-055	 -软件OT检测位置个位"             addr="00B3h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-056" name="Pr-056	 +限制器检测位置万位"             addr="00B4h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="20000" />
+<PARAM id="Pr-057" name="Pr-057	 +限制器检测位置个位"             addr="00B5h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-058" name="Pr-058	 -限制器检测位置万位"             addr="00B6h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="-20000" />
+<PARAM id="Pr-059" name="Pr-059	 -限制器检测位置个位"             addr="00B7h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-060" name="Pr-060	定点、通过点检测位置1万位"        addr="00B8h" attr="S" unit="" 	type="I16" coef="1"   	 max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-061" name="Pr-061	定点、通过点检测位置1个位"        addr="00B9h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-062" name="Pr-062	定点、通过点检测位置2万位"        addr="00Bah" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-063" name="Pr-063	定点、通过点检测位置2个位"        addr="00Bbh" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-064" name="Pr-064	定点检测范围万位"                 addr="00Bch" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-065" name="Pr-065	定点检测范围个位"                 addr="00Bdh" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-066" name="Pr-066	定点、通过点检测"                 addr="00Beh" attr="S" unit="" 	type="U16" coef="1"	     max="2"        min="0"       def="0" />
+<PARAM id="Pr-067" name="Pr-067	预留6"                            addr="00Bfh" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+<PARAM id="Pr-068" name="Pr-068	预留7"                            addr="00C0h" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+<PARAM id="Pr-069" name="Pr-069	预留8"                            addr="00C1h" attr="S" unit="" 	type="U16" coef="1"	     max="32767"    min="0"       def="0" />
+<PARAM id="Pr-070" name="Pr-070	多段位置给定1万位"                addr="00C2h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-071" name="Pr-071	多段位置给定1个位"                addr="00C3h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-072" name="Pr-072	多段位置给定2万位"                addr="00C4h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-073" name="Pr-073	多段位置给定2个位"                addr="00C5h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+<PARAM id="Pr-074" name="Pr-074	多段位置给定3万位"                addr="00C6h" attr="S" unit="" 	type="I16" coef="1"	     max="32767"    min="-32768"  def="0" />
+<PARAM id="Pr-075" name="Pr-075	多段位置给定3个位"                addr="00C7h" attr="S" unit="" 	type="I16" coef="1"	     max="9999"     min="-9999"   def="0" />
+</PARAMGROUP>
+
+</PARAMS>
+
+
+<STATUS>
+
+<PARAMGROUP name="状态1区">
+<!-- PARAM id="STP-00" name="状态字"         addr="2000H" attr="R" type="H16" coef="1"     unit=""      min="0"      max="65535" def="0" / -->
+<PARAM id="STP-01" name="当前转速"       addr="2002H" attr="R" type="I16" coef="1"     unit="rpm"   min="-20000" max="20000" def="0" />
+<PARAM id="STP-02" name="指令转速"       addr="2003H" attr="R" type="I16" coef="1"     unit="rpm"   min="-20000" max="20000" def="0" />
+<PARAM id="STP-03" name="平均转矩"       addr="2004H" attr="R" type="I16" coef="0.01"  unit="NM"    min="-1000"  max="1000"  def="0" />
+<PARAM id="STP-04" name="直流电压"       addr="2005H" attr="R" type="U16" coef="1"     unit="V"     min="0"      max="720"   def="0" />
+<PARAM id="STP-05" name="命令积算脉冲"   addr="2006H" attr="R" type="I32" coef="1"     unit="pul"   min="-32768" max="32768" def="0" />
+<PARAM id="STP-06" name="返回积算脉冲"   addr="2008H" attr="R" type="I32" coef="1"     unit="pul"   min="-32768" max="32768" def="0" />
+<PARAM id="STP-07" name="位置偏差"       addr="200aH" attr="R" type="I32" coef="1"     unit="pul"   min="-32768" max="32768" def="0" />
+<PARAM id="STP-08" name="编码器反馈"     addr="200cH" attr="R" type="I32" coef="1"     unit="pul"   min="-32768" max="32768" def="0" />
+<PARAM id="STP-09" name="保留1"          addr="200eH" attr="R" type="U16" coef="1"     unit=""      min="0"      max="65536" def="0" />
+<PARAM id="STP-0a" name="保留2"          addr="200fH" attr="R" type="U16" coef="1"     unit=""      min="0"      max="65536" def="0" />
+<PARAM id="STP-0b" name="负荷惯量比"     addr="2010H" attr="R" type="U16" coef="0.01"  unit="%"     min="0"      max="65536" def="0" />
+<PARAM id="STP-0c" name="脉冲串输入频率" addr="2011H" attr="R" type="U16" coef="0.01"  unit="kHz"   min="0"      max="5000"  def="0" />
+<PARAM id="STP-0d" name="散热器温度"     addr="2012H" attr="R" type="U16" coef="1"     unit="℃"    min="0"      max="120"   def="0" />
+<PARAM id="STP-0e" name="模拟给定电压"   addr="2013H" attr="R" type="U16" coef="0.01"  unit="V"     min="0"      max="1000"  def="0" />
+<!-- PARAM id="STP-0f" name="IO端子状态"     addr="2014H" attr="R" type="H16" coef="1"     unit=""      min="0"      max="65535" def="0" / -->
+</PARAMGROUP>
+
+<PARAMGROUP name="状态2区">
+<PARAM id="STP-30" name="电角度"         addr="2030H" attr="R" type="U16" coef="0.1"   unit="°"    min="0"      max="3600"   def="0" />
+<PARAM id="STP-31" name="A相电流"        addr="2031H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-32" name="B相电流"        addr="2032H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-33" name="C相电流"        addr="2033H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-34" name="D轴电流给定"    addr="2034H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-35" name="Q轴电流给定"    addr="2035H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-36" name="D轴电流反馈"    addr="2036H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-37" name="Q轴电流反馈"    addr="2037H" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-38" name="D轴电压给定"    addr="2038H" attr="R" type="I16" coef="0.001" unit=""      min="-2000"  max="2000"   def="0" />
+<PARAM id="STP-39" name="Q轴电压给定"    addr="2039H" attr="R" type="I16" coef="0.001" unit=""      min="-2000"  max="2000"   def="0" />
+<PARAM id="STP-3a" name="机械角度"       addr="203aH" attr="R" type="I16" coef="1"     unit="pul"   min="0"      max="3600"   def="0" />
+<PARAM id="STP-3b" name="Ialfa"          addr="203bH" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-3c" name="Ibeta"          addr="203cH" attr="R" type="I16" coef="0.01"  unit="A"     min="-30000" max="30000"  def="0" />
+<PARAM id="STP-3d" name="保留3"          addr="203dH" attr="R" type="U16" coef="1"     unit=""      min="0"      max="65535"  def="0" />
+</PARAMGROUP>
+
+<PARAMGROUP name="内部状态标志"  style="checkgroup"  addr="2000H" attr="R" type="U16" coef="1" unit="" min="0" max="65535" def="0"  >
+<PARAM id="STI1-00" name="系统初始化状态"                     mask="0001H" />
+<PARAM id="STI1-01" name="伺服使能状态"                       mask="0002H" />
+<PARAM id="STI1-02" name="Z信号捕获状态"                      mask="0004H" />
+<PARAM id="STI1-03" name="系统准备状态"                       mask="0008H" />
+<PARAM id="STI1-04" name="定位状态"                           mask="0010H" />
+<PARAM id="STI1-05" name="FN10标志"                           mask="0020H" />
+<PARAM id="STI1-06" name="FN01标志"                           mask="0040H" />
+<PARAM id="STI1-07" name="过载区标志"                         mask="0080H" />
+<PARAM id="STI1-08" name="正向超程标志"                       mask="0100H" />
+<PARAM id="STI1-09" name="反向超程标志"                       mask="0200H" />
+<PARAM id="STI1-0a" name="上电模拟中点检测标志"               mask="0400H" />
+<PARAM id="STI1-0b" name="零偏差到达标志"                     mask="0800H" />
+<PARAM id="STI1-0c" name="零速度到达标志"                     mask="0100H" />
+<PARAM id="STI1-0d" name="抱闸状态"                           mask="0200H" />
+</PARAMGROUP>
+
+<PARAMGROUP name="输入输出状态"  style="checkgroup"  addr="2014H" attr="R" type="U16" coef="1" unit="" min="0" max="1" def="0" >
+<PARAM id="STIO-00" name="硬件CONT1信号"                 mask="0001H" />
+<PARAM id="STIO-01" name="硬件CONT2信号"                 mask="0002H" />
+<PARAM id="STIO-02" name="硬件CONT3信号"                 mask="0004H" />
+<PARAM id="STIO-03" name="硬件CONT4信号"                 mask="0008H" />
+<PARAM id="STIO-04" name="硬件CONT5信号"                 mask="0010H" />
+
+<PARAM id="STIO-05" name="硬件OUT1信号"                  mask="0100H" />
+<PARAM id="STIO-06" name="硬件OUT2信号"                  mask="0200H" />
+<PARAM id="STIO-07" name="硬件OUT3信号"                  mask="0400H" />
+<PARAM id="STIO-08" name="硬件OUT4信号"                  mask="0800H" />
+
+<PARAM id="STIO-09" name="软件CONT1信号"                 mask="1000H" />
+<PARAM id="STIO-0A" name="软件CONT2信号"                 mask="2000H" />
+<PARAM id="STIO-0B" name="软件CONT3信号"                 mask="4000H" />
+<PARAM id="STIO-0C" name="软件CONT4信号"                 mask="8000H" />
+</PARAMGROUP>
+
+
+</STATUS>
+
+<ADJUST name="快捷调试">
+<PARAMGROUP name="点动运行 Fn01">
+<PARAM id="QC-001" name="QC-001 退出功能"                  addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="0"  max="0"    def="0" ><BUTTON name="ESC"  group="1" clear="1"  val="0"  /></PARAM>
+<PARAM id="QC-002" name="QC-002 点动运行"                  addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="1"  max="1"    def="1" ><BUTTON name="FN01" group="1"  val="1" /></PARAM>
+<PARAM id="QC-022" name="QC-022 运行方向"                  addr="1081H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="7"     def="0"  >
+<OPTION name="1:停车"     val="0" />
+<OPTION name="2:正转"     val="1" />
+<OPTION name="3:反转"     val="2" />
+<OPTION name="4:反向"     val="3" />
+</PARAM>
+<PARAM id="Pn-094" name="Pn-094 点动速度"                  addr="005dH"     attr="P" type="U16" coef="0.1"   unit="rps"  min="0"    max="30000" def="500" />
+<PARAM id="QC-003" name="QC-003 伺服SCI急停"               addr="1084H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="1"      def="0" ><SWITCH off="0-不急停"  on="1-急停" /></PARAM>
+<PARAM id="QC-004" name="QC-004 伺服SCI复位"               addr="1085H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="1"      def="0" ><SWITCH off="0-不复位"  on="1-复位" /></PARAM>
+</PARAMGROUP>    
+    
+<PARAMGROUP name="简易运行 Fn10">
+<PARAM id="QC-010" name="QC-010 退出功能"                  addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="0"  max="0"    def="0" ><BUTTON name="ESC"  group="1"  clear="1"  val="0" /></PARAM>
+<PARAM id="QC-011" name="QC-011 简易运行"                  addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="10" max="10"   def="10"><BUTTON name="FN10" group="1"  val="10"/></PARAM>
+
+<PARAM id="QC-012" name="QC-012 运行模式"                   addr="005cH"     attr="P" type="U16" coef="1"     unit=""     min="0"    max="2"     def="1" >
+<OPTION name="0:位置"     val="0" />
+<OPTION name="1:速度"     val="1" />
+<OPTION name="2:转矩"     val="2" />
+</PARAM>
+
+<PARAM id="QC-013" name="QC-013 运行方向"                  addr="1081H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="7"     def="0"  >
+<OPTION name="1:停车"     val="0" />
+<OPTION name="2:正转"     val="1" />
+<OPTION name="3:反转"     val="2" />
+<OPTION name="4:反向"     val="3" />
+</PARAM>
+<PARAM id="Pn-084" name="Pn-084 简易运行行程"              addr="0053H"     attr="P" type="U16" coef="0.1"   unit="pul"  min="5"    max="2000"  def="20" />
+<PARAM id="Pn-092" name="Pn-092 简易运行速度"              addr="005bH"     attr="P" type="U16" coef="0.1"   unit="rpm"  min="0"    max="30000" def="2000" />
+<PARAM id="Pn-091" name="Pn-091 简易运行电流"              addr="005aH"     attr="P" type="U16" coef="0.01"  unit="A"    min="0"    max="300"   def="100" />
+<PARAM id="QC-014" name="QC-014 伺服SCI急停"               addr="1084H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="1"      def="0" ><SWITCH off="0-不急停"  on="1-急停" /></PARAM>
+<PARAM id="QC-015" name="QC-015 伺服SCI复位"               addr="1085H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="1"      def="0" ><SWITCH off="0-不复位"  on="1-复位" /></PARAM>
+</PARAMGROUP>
+
+<PARAMGROUP name="模式运行 Fn11">
+<PARAM id="QC-021" name="QC-021 退出功能"                  addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="0"  max="0"    def="0" ><BUTTON name="ESC"  group="1" clear="1" val="0" /></PARAM>
+<PARAM id="QC-022" name="QC-022 模式运行"                  addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="11" max="11"   def="11"><BUTTON name="FN11" group="1"  val="11"/></PARAM>
+
+<PARAM id="Pn-084" name="Pn-084 模式运行行程"              addr="0053H"     attr="P" type="U16" coef="0.1"   unit="pul"  min="5"    max="2000"  def="20" />
+<PARAM id="Pn-085" name="Pn-085 模式运行速度"              addr="0054H"     attr="P" type="U16" coef="0.1"   unit="rpm"  min="100"  max="30000" def="2000" />
+<PARAM id="Pn-086" name="Pn-086 模式运行时间"              addr="0055H"     attr="P" type="U16" coef="0.01"  unit="s"    min="1"    max="500"   def="50" />
+<PARAM id="Pn-087" name="Pn-087 模式运行计数"              addr="0056H"     attr="P" type="U16" coef="1"     unit="s"    min="1"    max="1000"  def="10" />
+<PARAM id="QC-025" name="QC-025 伺服SCI急停"               addr="1084H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="1"      def="0" ><SWITCH off="0-不急停"  on="1-急停" /></PARAM>
+<PARAM id="QC-026" name="QC-026 伺服SCI复位"               addr="1085H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="1"      def="0" ><SWITCH off="0-不复位"  on="1-复位" /></PARAM>
+</PARAMGROUP>
+
+<PARAMGROUP name="通用调试">
+<PARAM id="QC-030" name="QC-030 伺服SCI启动"               addr="1083H" attr="S" type="U16" coef="1"   unit=""    min="0"     max="1"      def="0" ><SWITCH off="0:停止"    on="1:启动" /></PARAM>
+<PARAM id="QC-031" name="QC-031 伺服运行模式"              addr="1080H" attr="S" type="U16" coef="1"   unit=""   min="0"     max="2"    def="0" >
+<OPTION name="0:位置"     val="0" />
+<OPTION name="1:速度"     val="1" />
+<OPTION name="2:转矩"     val="2" />
+</PARAM>
+<PARAM id="QC-032" name="QC-032 伺服运行力矩给定"          addr="1088H" attr="S" type="I16" coef="0.001"    unit=""    min="-4000"      max="4000"  def="0"  />
+<PARAM id="QC-033" name="QC-033 伺服运行速度给定"          addr="1087H" attr="S" type="I16" coef="0.0001"   unit=""    min="-30000"     max="30000"  def="0"  />
+<PARAM id="QC-034" name="QC-034 伺服运行多段速选择"        addr="1082H" attr="S" type="U16" coef="1"        unit=""    min="0"         max="3"  def="0"  />
+<PARAM id="QC-035" name="QC-035 伺服运行位置(万位)"        addr="1089H" attr="S" type="I16" coef="1"        unit=""    min="-32768"    max="32767"  def="0"  />
+<PARAM id="QC-036" name="QC-036 伺服运行位置(个位)"        addr="108aH" attr="S" type="I16" coef="1"        unit=""    min="-9999"     max="9999"   def="0"  />
+<PARAM id="QC-037" name="QC-037 伺服SCI急停"               addr="1084H" attr="S" type="U16" coef="1"        unit=""    min="0"     max="1"      def="0" ><SWITCH off="0-不急停"  on="1-急停" /></PARAM>
+<PARAM id="QC-038" name="QC-038 伺服SCI复位"               addr="1085H" attr="S" type="U16" coef="1"        unit=""    min="0"     max="1"      def="0" ><SWITCH off="0-不复位"  on="1-复位" /></PARAM>
+</PARAMGROUP>
+
+<PARAMGROUP name="其他Fn操作" >
+<PARAM id="QC-040" name="QC-040 清除当前命令和反馈脉冲"    addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="2"  max="2"    def="2" ><BUTTON name="FN02" val="2" confirm="1"/></PARAM>
+<PARAM id="QC-041" name="QC-041 清除积算脉冲"              addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="3"  max="3"    def="3" ><BUTTON name="FN03" val="3" confirm="1"/></PARAM>
+<PARAM id="QC-042" name="QC-042 报警复位"                  addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="4"  max="4"    def="4" ><BUTTON name="FN04" val="4" confirm="1"/></PARAM>
+<PARAM id="QC-043" name="QC-043 报警记录初始化"            addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="5"  max="5"    def="5" ><BUTTON name="FN05" val="5" confirm="1"/></PARAM>
+<PARAM id="QC-044" name="QC-044 参数初始化"                addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="6"  max="6"    def="6" ><BUTTON name="FN06" val="6" confirm="1"/></PARAM>
+<PARAM id="QC-045" name="QC-045 自动补偿调整"              addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="7"  max="7"    def="7" ><BUTTON name="FN07" val="7" confirm="1"/></PARAM>
+<PARAM id="QC-046" name="QC-046 保留1"                     addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="8"  max="8"    def="8" ><BUTTON name="FN08" val="8" confirm="1"/></PARAM>
+<PARAM id="QC-047" name="QC-047 保留2"                     addr="1086H" attr="S" type="U16" coef="1"   unit=""    min="9"  max="9"    def="9" ><BUTTON name="FN09" val="9" confirm="1"/></PARAM>
+</PARAMGROUP>
+
+</ADJUST>
+
+
+<ALARM>
+
+<ADDR id="ERRORALARM" name="当前报警代码"     addr="2001H" />
+<ADDR id="ERRORCOUNT" name="报警记录条数"     addr="20a0H" />
+<ADDR id="RECADDRS"   name="报警记录起始地址" addr="20a1H" />
+<ADDR id="RECADDRE"   name="报警记录结束地址" addr="20abH" />
+<ADDR id="ERRORRESET" name="解除报警信号"     addr="1086H" val="4" />
+<ADDR id="ERRORCLEAR" name="清除报警记录"     addr="1086H" val="5" />
+<ADDR id="ERRORSTYLE" name="报警记录类型"     addr="0000H" val="1" />
+
+<ERRCODE id="E1"   name="功率电路过流报警"   code="OC1" mask="0001H" />
+<ERRCODE id="E2"   name="运行过流报警"       code="OC2" mask="0002H" />
+<ERRCODE id="E3"   name="电机超速报警"       code="OS"  mask="0003H" />
+<ERRCODE id="E4"   name="过电压报警"         code="Hu"  mask="0004H" />
+<ERRCODE id="E5"   name="泄放回路故障"       code="Ep"  mask="0005H" />
+<ERRCODE id="E6"   name="参数存储异常"       code="DE"  mask="0006H" />
+<ERRCODE id="E7"   name="编码器异常"         code="EC"  mask="0007H" />
+<ERRCODE id="E8"   name="电流传感器故障"     code="EH"  mask="0008H" />
+<ERRCODE id="E9"   name="驱动器过载"         code="OL"  mask="0009H" />
+<ERRCODE id="E10"  name="欠电压报警"         code="Lu"  mask="000aH" />
+<ERRCODE id="E11"  name="偏差超出故障"       code="OF"  mask="000bH" />
+<ERRCODE id="E12"  name="驱动器过热报警"     code="AH"  mask="000cH" />
+<ERRCODE id="E13"  name="CPLD操作故障"       code="PLD" mask="000dH" />
+<ERRCODE id="E14"  name="制动电阻故障"       code="rH1" mask="000eH" />
+<ERRCODE id="E15"  name="内部保护故障"       code="nt"  mask="000fH" />
+<ERRCODE id="E16"  name="使用掉电报警"       code="Pol" mask="0010H" />
+
+</ALARM>
+
+
+</SERV>

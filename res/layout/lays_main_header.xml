@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+	<LinearLayout
+	    xmlns:android="http://schemas.android.com/apk/res/android"
+		android:id="@+id/headerLayout"
+		android:layout_width="match_parent"
+		android:layout_height="114dp"
+		android:background="@drawable/sftitle"
+		android:gravity="center_vertical|end"
+		android:orientation="horizontal"
+		android:visibility="visible" 
+		android:layoutMode="opticalBounds"
+		>
+		<TextView
+			android:id="@+id/stepView"
+			android:layout_width="wrap_content"
+			android:layout_height="match_parent"
+			android:layout_marginRight="12dp"
+			android:textSize="32px"
+			android:textColor="#ffff9933"
+			android:background="#00000000"
+			android:gravity="center"        		
+			android:text="@string/proc_ctrl" 
+			/>
+		
+		<AnalogClock
+			android:id="@+id/analogClock1"
+	        android:layout_width="36dp"
+	        android:layout_height="36dp" 
+	        >
+	   	</AnalogClock>
+	  	               
+		<com.finley.usercomponents.ucTextCalendar
+			android:id="@+id/calendarView"
+			android:layout_width="36dp"
+			android:layout_height="36dp" >
+		</com.finley.usercomponents.ucTextCalendar>
+
+		<LinearLayout
+			android:id="@+id/comStartView"
+			android:layout_width="64px"
+			android:layout_height="match_parent"
+			android:background="@drawable/com_db9a"
+			android:gravity="center"
+			android:orientation="horizontal"
+			android:visibility="visible" 
+		>
+	
+		</LinearLayout>	
+	</LinearLayout>
+

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<inverterdescription >
+
+<INVERTER manufacturer="ABB (Asea Brown Boveri)" 
+    Model="ACS350"  
+    protocol="MODBUS-RTU"
+	baudrate="19200"
+	parity="none"
+	databits="8"
+	stopbits="1"
+>
+
+    
+</INVERTER>
+
+<INVERTER manufacturer="ABB (Asea Brown Boveri)" 
+    Model="ACS380"  
+    protocol="MODBUS-RTU"
+	baudrate="19200"
+	parity="none"
+	databits="8"
+	stopbits="1"
+>
+
+    
+</INVERTER>
+
+<INVERTER manufacturer="ABB (Asea Brown Boveri)" 
+    Model="ACS550"  
+    protocol="MODBUS-RTU"
+	baudrate="19200"
+	parity="none"
+	databits="8"
+	stopbits="1"
+>
+
+    
+</INVERTER>
+
+<INVERTER manufacturer="ABB (Asea Brown Boveri)" 
+    Model="ACS580"  
+    protocol="MODBUS-RTU"
+	baudrate="19200"
+	parity="none"
+	databits="8"
+	stopbits="1"
+>
+
+    
+</INVERTER>
+
+
+
+
+
+<INVERTER manufacturer="Rockwell AB(Allen-Bradley)" 
+    Model="PowerFlex 40P"  
+    protocol="MODBUS-RTU"
+	baudrate="19200"
+	parity="none"
+	databits="8"
+	stopbits="1"
+>
+    
+</INVERTER>
+
+<INVERTER manufacturer="Rockwell AB(Allen-Bradley)" 
+    Model="PowerFlex 520"  
+    protocol="MODBUS-RTU"
+	baudrate="19200"
+	parity="none"
+	databits="8"
+	stopbits="1"
+>
+    
+</INVERTER>
+
+<INVERTER manufacturer="Rockwell AB(Allen-Bradley)" 
+    Model="PowerFlex 527"  
+    protocol="MODBUS-RTU"
+	baudrate="19200"
+	parity="none"
+	databits="8"
+	stopbits="1"
+>
+    
+</INVERTER>
+
+<INVERTER manufacturer="Rockwell AB(Allen-Bradley)" 
+    Model="PowerFlex 750"  
+    protocol="MODBUS-RTU"
+	baudrate="19200"
+	parity="none"
+	databits="8"
+	stopbits="1"
+>
+    
+</INVERTER>
+
+
+<INVERTER manufacturer="Schneider Eletric" 
+    Model="Altivar ATV71"  
+    protocol="MODBUS-RTU"
+
+>
+    
+</INVERTER>
+
+
+
+<INVERTER manufacturer="Schneider Eletric" 
+    Model="Altivar ATV312"  
+    protocol="MODBUS-RTU"
+
+>
+    
+</INVERTER>
+
+
+
+
+<INVERTER manufacturer="Schneider Eletric" 
+    Model="Altivar ATV320"  
+    protocol="MODBUS-RTU"
+
+>
+    
+</INVERTER>
+
+<INVERTER manufacturer="Schneider Eletric" 
+    Model="Altivar ATV340"  
+    protocol="MODBUS-RTU"
+
+>
+    
+</INVERTER>
+
+
+
+</inverterdescription>

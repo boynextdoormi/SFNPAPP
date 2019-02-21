@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/vw1"
+    android:layout_width="fill_parent"
+    android:layout_height="32dp"
+    android:background="#000000"
+    android:orientation="horizontal"
+    android:padding="4dp" >
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:focusable="false"
+        android:contentDescription="@string/npcfg_title"
+        android:src="@drawable/icon_ccbinfo" />
+
+    <TextView
+        style="@style/pref_text"
+        android:id="@+id/id_sno"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/npcfg_title" />
+
+    <TextView
+        style="@style/pref_text"
+        android:id="@+id/editPadWidth"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/npcfg_title" />
+    
+    <TextView
+        style="@style/pref_text"
+        android:id="@+id/editNdleRadius"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/npcfg_title" />
+
+	<TextView
+        style="@style/pref_text"
+        android:id="@+id/editStepLen"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/npcfg_title" />
+
+</LinearLayout>

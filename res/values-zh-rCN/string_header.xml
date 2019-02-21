@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="page_header">
+    　   		<item>针刺总控</item>
+    	<item>工艺配置</item>
+    	<item>针迹仿真</item>
+        <item>设备调试</item>
+    	<item>设备配置</item>
+        <item>关于三辉</item>
+	</string-array>
+</resources>

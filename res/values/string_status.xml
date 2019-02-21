@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+ 
+     <string name="st_rob">ROB</string>
+     <string name="st_plc">PLC</string>
+     <string name="st_rf1">RF1</string>
+     <string name="st_rf2">RF2</string>
+     <string name="st_hmi1">HMI1</string>
+     <string name="st_hmi2">HMI2</string>
+
+     <string name="st_online">在线</string>
+     <string name="st_offline">离线</string>
+     <string name="rob_busy">忙碌</string>
+     <string name="rob_idle">空闲</string>
+     <string name="rob_fault">故障</string>
+     
+     <string name="st_outofservice">　　　　　暂停服务　　　　　　</string>
+     <string name="st_inservice"   >　　　看物间使用中，请稍候　　　</string>
+     <string name="st_freeservice" >　　　欢迎光临！敬请刷卡&#8230;　　　 </string>
+     <string name="est_outofservice">Out of Service</string>
+     <string name="est_inservice"   >Cabin in Using</string>
+     <string name="est_freeservice" >Cabin is Free</string>
+
+</resources>

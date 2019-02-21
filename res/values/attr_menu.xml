@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<resources>
+ 	<declare-styleable name="MenuItem">  
+        <attr name="background" format="string" />  
+ 	    <attr name="itemLogo" format="reference" />  
+ 	    <attr name="itemText" format="reference|string" />  
+        <attr name="itemHint" format="reference|string" /> 
+    </declare-styleable>  
+</resources>

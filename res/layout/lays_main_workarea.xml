@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/workareaLayout"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginTop="60px"
+    android:layout_marginBottom="51px"
+    android:visibility="visible"
+    android:orientation="vertical" 
+    >
+	<com.finley.usercomponents.xViewPager
+    	android:id="@+id/vPager"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent" />
+
+</RelativeLayout>

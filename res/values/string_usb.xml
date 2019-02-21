@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="usb_err_nomgr">USB manager not found.</string>
+    <string name="usb_err_noatt">No USB device attached.</string>
+    <string name="usb_err_nogrn">USB device not grant.</string>
+    <string name="usb_err_nocon">Failed open USB device.</string>
+    
+</resources>

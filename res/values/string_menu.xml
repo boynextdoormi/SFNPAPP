@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>    
+     <string name="mit_process">针刺工序</string>
+     <string name="mih_process">各道针刺机运行概况</string>
+     <string name="mit_machine">机器状态</string>
+     <string name="mih_machine">选定针刺机运行状态</string>
+
+     <string name="mit_ndlepad">针刺模拟</string>
+     <string name="mih_ndlepad">点击此处显示按钮</string>
+     <string name="mit_config">产线配置</string>
+     <string name="mih_config">生产厂家生产线配置</string>
+
+</resources>

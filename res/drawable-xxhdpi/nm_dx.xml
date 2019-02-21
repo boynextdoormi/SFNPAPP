@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--每一个  item 中包括一帧组成动画的图片 -->
+    <item android:drawable="@drawable/nm_du1" android:duration="180" />
+    <item android:drawable="@drawable/nm_du2" android:duration="180" />
+    <item android:drawable="@drawable/nm_du3" android:duration="180" />
+    <item android:drawable="@drawable/nm_du2" android:duration="180" />
+</animation-list>

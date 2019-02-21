@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="1024px"
+    android:layout_height="768px"
+    android:background="@drawable/sanfai_factory"
+    android:id="@+id/topLayerView"
+    >
+    
+	<include layout="@layout/lays_main_workarea" />
+	<include layout="@layout/lays_main_header" />
+    
+	<ImageView
+	    android:id="@+id/logoView"
+	    android:layout_width="150px"
+	    android:layout_height="150px"
+		android:layout_marginTop="12px"
+		android:layout_marginLeft="24px"
+	    android:src="@drawable/sflogo256"
+        android:contentDescription="@string/dummystr"
+	    >   
+	</ImageView>
+
+    <LinearLayout
+        android:id="@+id/statusPanelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ff2020ff"
+        android:gravity="start"
+        android:orientation="horizontal"
+        android:visibility="visible" >
+    </LinearLayout>
+
+</RelativeLayout>

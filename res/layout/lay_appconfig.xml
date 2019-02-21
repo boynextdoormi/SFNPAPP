@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="6dp" 
+    >
+    
+	<RelativeLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="72px"
+	    android:background="@drawable/menuitem9"
+	    android:gravity="left|center_vertical"
+	    android:padding="6dp" >
+
+
+	    <ImageView
+	    	android:layout_width="32dp"
+	        android:layout_height="32dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_centerVertical="true"
+	        android:layout_marginLeft="12dp"
+	        android:focusable="false"
+	        android:src="@drawable/icon_branch" 
+            android:contentDescription="@string/dummystr"
+	        />
+
+	    <TextView
+			style="@style/pref_conf_dlgt"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="@string/appcfg_port_head" 
+	        android:layout_marginTop="4px"	            
+	        android:layout_marginLeft="48dp"	            
+	    	/>
+		<TextView
+	        style="@style/pref_conf_dlgh"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="28px"	            
+	        android:layout_marginLeft="48dp"	            
+	        android:text="@string/appcfg_port_hint" 
+	        />
+
+		<Spinner 
+		    android:id="@+id/spinnerPortList" 
+		    android:layout_width="120dp"
+     		android:layout_height="wrap_content" 
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="12dp"
+			android:spinnerMode="dropdown"
+     		>
+			<requestFocus />
+     	</Spinner>
+
+	</RelativeLayout>
+  
+	<RelativeLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="72px"
+	    android:background="@drawable/menuitem9"
+	    android:gravity="left|center_vertical"
+	    android:padding="6dp" 
+	    >
+		<ImageView
+	    	android:layout_width="32dp"
+	        android:layout_height="32dp"
+	        android:layout_alignParentLeft="true"
+	        android:layout_centerVertical="true"
+	        android:focusable="false"
+	        android:layout_marginLeft="12dp"
+	        android:src="@drawable/icon_branch" 
+            android:contentDescription="@string/dummystr"
+	        />
+		<TextView
+	    	style="@style/pref_conf_dlgt"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginLeft="48dp"	            
+	        android:text="@string/appcfg_addr_head" 
+	        />
+	
+		<TextView
+	    	style="@style/pref_conf_dlgh"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="28px"	            
+	        android:layout_marginLeft="48dp"	            
+	        android:text="@string/appcfg_addr_hint" 
+	        />
+
+	    <EditText
+	        android:id="@+id/editDevAddr"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentRight="true"
+	        android:layout_marginRight="12dp"
+	        android:ems="3"
+	        android:inputType="number" 
+	        >
+	    </EditText>
+		
+	    	    
+	</RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64px"
+        android:orientation="horizontal" 
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        >
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="80px"
+            android:layout_height="32px"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/button"            
+            android:text="@string/cancel" 
+            android:textSize="16sp"
+            android:textColor="#ffff8020"
+            />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="80px"
+            android:layout_height="32px"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/button"
+            android:text="@string/confirm" 
+            android:textSize="16sp"
+            android:textColor="#ffff8020"
+            />
+    
+    </LinearLayout>
+		
+</LinearLayout>

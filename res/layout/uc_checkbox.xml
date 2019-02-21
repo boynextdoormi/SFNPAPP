@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/pad_menu"
+    android:gravity="center"
+    >
+
+    <CheckBox
+        android:id="@+id/checkBox1"
+	    style="@style/pad_menu"
+		android:background="@drawable/npchk"  
+        android:text="" 
+        android:button="@drawable/npchknil"
+        android:textSize="1sp"
+        />
+    
+    <TextView
+        android:id="@+id/textView"
+        style="@style/pad_menu"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:textSize="16sp"
+        android:text="1"     
+        />
+    
+</RelativeLayout>

@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="6dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72px"
+        android:background="@drawable/menuitem9"
+        android:gravity="left|center_vertical"
+        android:padding="6dp" >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:contentDescription="@string/dummystr"
+            android:focusable="false"
+            android:src="@drawable/icon_branch" />
+
+        <TextView
+            style="@style/pref_conf_dlgt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="4px"
+            android:text="@string/appcfg_port_head" />
+
+        <TextView
+            style="@style/pref_conf_dlgh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="28px"
+            android:text="@string/appcfg_port_hint" />
+
+        <Spinner
+            android:id="@+id/spinnerPortList"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:spinnerMode="dropdown" >
+
+            <requestFocus />
+        </Spinner>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="72px"
+        android:background="@drawable/menuitem9"
+        android:gravity="left|center_vertical"
+        android:padding="6dp" >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:contentDescription="@string/dummystr"
+            android:focusable="false"
+            android:src="@drawable/icon_branch" />
+
+        <TextView
+            style="@style/pref_conf_dlgt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:text="@string/appcfg_addr_head" />
+
+        <TextView
+            style="@style/pref_conf_dlgh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="48dp"
+            android:layout_marginTop="28px"
+            android:text="@string/appcfg_addr_hint" />
+
+        <Spinner
+            android:id="@+id/editDevAddr"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp"
+            android:spinnerMode="dropdown" >
+        </Spinner>        
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="64px"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="80px"
+            android:layout_height="32px"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/button"
+            android:text="@string/cancel"
+            android:textColor="#ffff8020"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="80px"
+            android:layout_height="32px"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:background="@drawable/button"
+            android:text="@string/confirm"
+            android:textColor="#ffff8020"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <android.inputmethodservice.KeyboardView
+        android:id="@+id/keyboardview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_weight="0.33"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:visibility="gone" />
+
+</LinearLayout>

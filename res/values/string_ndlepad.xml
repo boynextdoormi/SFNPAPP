@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <string name="npcfg_title">针刺模拟参数配置</string>
+    <string name="npcfg_padwidth">取样宽度：</string>
+    <string name="npcfg_radius">针孔半径：</string>
+    <string name="npcfg_steplen">步进量：</string>
+    
+    <string name="npcfg_padwidth_hint">单位mm</string>
+    <string name="npcfg_radius_hint">单位mm</string>
+    <string name="npcfg_steplen_hint">单位mm</string>
+    
+</resources>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/idFrameLayout"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:background="@drawable/menuitem9"
+    android:gravity="left|center_vertical"
+    android:paddingLeft="6dp" 
+    android:paddingTop="2dp" 
+    android:paddingBottom="6dp" 
+    >
+    <ImageView
+        android:id="@+id/itemLogo"
+    	android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:focusable="false"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/icon_branch" 
+		android:contentDescription="@string/dummystr"
+        />
+    <TextView
+    	android:id="@+id/itemText"
+    	style="@style/pref_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="48dp"
+		android:layout_alignParentTop="true"
+        android:text="@string/menu_text" 
+        />
+
+	<TextView
+    	android:id="@+id/itemHint"
+    	style="@style/pref_hint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="48dp"
+        android:layout_marginBottom="8dp"
+		android:layout_alignParentBottom="true"
+        android:text="@string/menu_desc" />
+    
+</RelativeLayout>

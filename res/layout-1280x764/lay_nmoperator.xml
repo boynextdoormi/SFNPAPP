@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/msub_process"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="300px"
+        android:layout_height="300px"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/nm_dn0" 
+		android:contentDescription="@string/dummystr"
+        />
+    <include layout="@layout/lay_nmoperatorx" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:gravity="center"
+        android:orientation="vertical" >
+        
+        <CheckBox
+            android:id="@+id/standaloneButton"
+	        android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+            android:button="@drawable/knobx"
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
+      <CheckBox
+            android:id="@+id/resetButton"
+	        android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+            android:button="@drawable/knobreset"			
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
+  
+        <CheckBox
+            android:id="@+id/emergencyButton"
+	        android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+            android:button="@drawable/emcbutton"
+            android:text=""
+            android:textOff=""
+            android:textOn="" />
+                
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+	        android:layout_width="wrap_content"
+    	    android:layout_height="wrap_content"
+            android:background="@drawable/mainswitch_b"
+            android:orientation="horizontal" 
+            >
+
+            <RadioButton
+                android:id="@+id/mainSwitchOff"
+	            android:layout_width="wrap_content"
+    	        android:layout_height="wrap_content"
+                android:checked="true"
+                android:button="@drawable/mainswitch_r"
+                android:text="" />
+
+            <RadioButton
+                android:id="@+id/mainSwitchOn"
+	            android:layout_width="wrap_content"
+    	        android:layout_height="wrap_content"
+                android:button="@drawable/mainswitch_g"
+                android:text="" 
+                />
+
+        </RadioGroup>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

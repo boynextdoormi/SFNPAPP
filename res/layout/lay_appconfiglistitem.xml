@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_container"
+    android:layout_width="fill_parent"
+    android:layout_height="32dp"
+    android:background="#000000"
+    android:orientation="horizontal"
+    android:padding="4dp" >
+
+    <TextView
+        style="@style/pref_text"
+        android:id="@+id/itemtext"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="@string/npcfg_title" />
+
+</LinearLayout>
+

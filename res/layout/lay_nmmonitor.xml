@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/msub_process"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginRight="200px"
+    android:background="@drawable/sanfai_factory"
+    >
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="432px"
+        android:layout_height="492px"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/nm_dn0" 
+        android:contentDescription="@string/dummystr"
+        />
+	    
+</RelativeLayout>

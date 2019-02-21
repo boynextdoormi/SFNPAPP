@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/msub_process"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="left|top"
+    android:paddingRight="200px" 
+    >
+    
+	<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+		    android:orientation="horizontal"
+		    android:background="@drawable/box_2a"
+	>
+
+	<LinearLayout
+            android:layout_width="320px"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+		    android:paddingLeft="16px"
+		    android:paddingTop="96px"
+		    android:gravity="center"
+			>
+	    	    
+	    	<LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+		    android:gravity="center"
+    		android:background="@drawable/box_cell3"            
+            >
+
+	        <TextView
+	            android:id="@+id/textView1"
+				style="@style/pref_conf_head"            
+	            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	            android:text="针刺机驱动型式" 
+	            />
+	        
+	        <RadioGroup
+	            android:id="@+id/radioGroup1"
+		        android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	            android:orientation="vertical" 
+	    		android:paddingLeft="56dp"
+	            >
+	
+	            <RadioButton
+					style="@style/pref_conf_item"            
+	                android:id="@+id/singleDriver"
+		            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	                android:checked="true"
+	                android:text="单主机驱动" 
+	                />
+	
+	            <RadioButton
+					style="@style/pref_conf_item"            
+	                android:id="@+id/doubleDriver"
+		            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	                android:text="双主机驱动" 
+	                />
+	
+	        </RadioGroup>
+	        
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+	            android:layout_height="48px"
+            android:orientation="vertical"           
+                >
+        </LinearLayout>
+                
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" 
+    		android:background="@drawable/box_cell3"            
+             >
+
+	        <TextView
+				style="@style/pref_conf_head"            
+	            android:id="@+id/textView2"
+	            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	            android:text="是否前置过渡帘" 
+
+	            />
+	
+	        <RadioGroup
+	            android:id="@+id/radioGroup2"
+		        android:layout_width="match_parent"
+	    	    android:layout_height="wrap_content"
+	            android:orientation="vertical" 
+	    		android:paddingLeft="56dp"
+	            >
+	
+	            <RadioButton
+					style="@style/pref_conf_item"            
+	                android:id="@+id/withFeedingDrive"
+		            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	                android:checked="true"
+	                android:text="不含过渡帘" 
+	                />
+	
+	            <RadioButton
+					style="@style/pref_conf_item"            
+	                android:id="@+id/withOutFeedingDrive"
+		            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	                android:text="包含过渡帘" 
+	                />
+	
+	        </RadioGroup>
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+    	android:layout_width="16px"
+        android:layout_height="match_parent"
+        android:orientation="vertical"           
+        >
+    </LinearLayout>
+                
+	<LinearLayout
+		android:layout_width="320px"
+        android:layout_height="432px"
+        android:orientation="vertical" 
+    	android:background="@drawable/box_cell9"  
+        >
+
+        	<TextView
+				style="@style/pref_conf_head"            
+	            android:id="@+id/textCfgView1"
+	            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	            android:text="主机1配置" 
+    			/>
+        	<TextView
+				style="@style/pref_conf_head"            
+	            android:id="@+id/textCfgView2"
+	            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	            android:text="主机2配置" 
+    			/>
+        	<TextView
+				style="@style/pref_conf_head"            
+	            android:id="@+id/textCfgView3"
+	            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	            android:text="输入辊配置" 
+    			/>
+        	<TextView
+				style="@style/pref_conf_head"   
+	            android:id="@+id/textCfgView4"
+	            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	            android:text="输出辊配置" 
+    			/>
+        	<TextView
+				style="@style/pref_conf_head"            
+	            android:id="@+id/textCfgView5"
+	            android:layout_width="match_parent"
+	            android:layout_height="48px"
+	            android:text="过渡帘配置" 
+    			/>
+    </LinearLayout>
+
+ </LinearLayout>
+ 
+</LinearLayout>

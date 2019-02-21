@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+    <string name="shared_user_id">com.sanfai.ctrl</string>
+    <string name="shared_user_label">SFNMApp</string>    
+    <string name="app_name">SanFai Needle Machine</string>
+    <string name="dummystr"> </string>  
+</resources>

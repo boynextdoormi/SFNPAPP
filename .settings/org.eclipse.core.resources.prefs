@@ -1,0 +1,10 @@
+eclipse.preferences.version=1
+encoding//src/com/finley/helper/CrashHandler.java=UTF-8
+encoding//src/com/finley/helper/HttpHelper.java=UTF-8
+encoding//src/com/finley/helper/MD5.java=UTF-8
+encoding//src/com/sanfai/device/AppEntry.java=UTF-8
+encoding//src/com/sanfai/device/helper/CrashHandler.java=UTF-8
+encoding//src/com/sanfai/device/helper/HttpHelper.java=UTF-8
+encoding//src/com/sanfai/device/helper/MD5.java=UTF-8
+encoding//src/com/sanfai/np/AppEntry.java=UTF-8
+encoding//src/com/sanfai/np/objects/UartUSB.java=UTF-8

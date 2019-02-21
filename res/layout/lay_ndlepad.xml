@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/drawer"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        >
+
+        <ImageView
+            android:id="@+id/operMenu"
+            style="@style/pad_menu"
+            android:focusable="false"
+            android:src="@drawable/npmenu" 
+            android:contentDescription="@string/dummystr"
+            />
+        
+        <ScrollView
+            android:id="@+id/horizontalScrollView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+    <LinearLayout
+        android:id="@+id/operPad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="visible"
+        >
+        
+        <ImageView
+            android:id="@+id/operOpen"
+            style="@style/pad_menu"
+            android:focusable="false"
+            android:src="@drawable/npnewp" 
+            android:contentDescription="@string/dummystr"
+            />
+
+        <ImageView
+            android:id="@+id/operConf"
+            style="@style/pad_menu"
+            android:focusable="false"
+            android:src="@drawable/npconf" 
+            android:contentDescription="@string/dummystr"
+            />
+        
+        <ImageView
+            android:id="@+id/operDisp"
+            style="@style/pad_menu"
+            android:focusable="false"
+            android:src="@drawable/npdisp" 
+            android:contentDescription="@string/dummystr"
+            />
+        <ImageView
+            android:id="@+id/operOlap"
+            style="@style/pad_menu"
+            android:focusable="false"
+            android:src="@drawable/npolap" 
+            android:contentDescription="@string/dummystr"
+            />
+        <ImageView
+            android:id="@+id/operParm"
+            style="@style/pad_menu"
+            android:focusable="false"
+            android:src="@drawable/npparm" 
+            android:contentDescription="@string/dummystr"
+            />
+        <ImageView
+            android:id="@+id/operTrns"
+            style="@style/pad_menu"
+            android:focusable="false"
+            android:src="@drawable/nptrns" 
+            android:contentDescription="@string/dummystr"
+            />
+        
+       </LinearLayout>
+        </ScrollView>
+        
+        
+    </LinearLayout>
+
+</RelativeLayout>

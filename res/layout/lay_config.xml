@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/msub_process"
+    android:layout_width="match_parent"
+    android:layout_height="52dp"
+    android:background="@drawable/menuitem9"
+    android:gravity="left|center_vertical"
+    android:padding="6dp" 
+    >
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center" >
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:focusable="false"
+            android:src="@drawable/icon_branch" 
+            android:contentDescription="@string/dummystr"
+            />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|left"
+        android:orientation="vertical"
+        android:paddingLeft="40dp" >
+
+        <TextView
+            style="@style/pref_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mit_config" />
+
+        <TextView
+            style="@style/pref_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mih_config" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string name="appcfg_title">针刺机连接配置</string>
+    <string name="appcfg_port_head">串行端口</string>
+    <string name="appcfg_port_hint">连接针刺机控制器的端口</string>
+    <string name="appcfg_addr_head">设备地址</string>
+    <string name="appcfg_addr_hint">针刺机控制器设备地址</string>
+    <string-array name="port_available">
+    　   		<item>COM1</item>
+    	<item>COM2</item>
+    	<item>COM3</item>
+        <item>COM4</item>
+    	<item>USB</item>
+	</string-array>    
+</resources>

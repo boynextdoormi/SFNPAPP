@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animation-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <!--每一个  item 中包括一帧组成动画的图片 -->
+    <item android:drawable="@drawable/sanfai_connect_m1" android:duration="800" />
+    <item android:drawable="@drawable/sanfai_connect_m2" android:duration="200" />
+    <item android:drawable="@drawable/sanfai_connect_m3" android:duration="200" />
+    <item android:drawable="@drawable/sanfai_connect_m4" android:duration="200" />
+    <item android:drawable="@drawable/sanfai_connect_m3" android:duration="200" />
+    <item android:drawable="@drawable/sanfai_connect_m2" android:duration="200" />
+</animation-list>
